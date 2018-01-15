@@ -9,12 +9,16 @@ int main()
 	int G[MAX][MAX], i, j, n, u;
 	printf("Enter the no. of vertices: ");
 	scanf("%d", &n);
+    if(n < 2){
+        printf("\nNumber of vertices must be >= 2!");
+        return 1;
+    }
 	printf("\nEnter the adjacency matrix:\n");
 	for(i=0;i < n;i++)
 	{
 		for(j=0;j < n;j++)
 		{
-			printf("Enter the element of row %d and column %d: ",i,j);
+			printf("Enter the element of row %d and column %d: ",(i+1),(j+1));
 			scanf("%d", &G[i][j]);
 		}
 	}
@@ -29,9 +33,24 @@ int main()
 	}
 	printf("\nEnter the starting node: ");
 	scanf("%d", &u);
-	dijkstra(G,n,u);
+    if(u < 1 || u > n){
+        printf("\nBad starting vertex : %d\nShould be between 1 and %d!", u, n);
+        return 1;
+    }
+	dijkstra(G,n,u-1);
 	return 0;
 }
+
+// Test
+/*int main(){
+    int G[MAX][MAX] = {{0, 1, 6, 0, 0},
+                        {1, 0, 2, 3, 5},
+                        {6, 2, 0, 4, 2},
+                        {0, 3, 4, 0, 2},
+                        {0, 5, 2, 2, 0}};
+    dijkstra(G, 5, 0);
+    return 0;
+}*/
  
 void dijkstra(int G[MAX][MAX], int n, int startnode)
 {
@@ -84,13 +103,13 @@ void dijkstra(int G[MAX][MAX], int n, int startnode)
 	for(i=0;i < n;i++)
 		if(i!=startnode)
 		{
-			printf("\nDistance of %d = %d", i, distance[i]);
-			printf("\nPath = %d", i);
+			printf("\nDistance of %d from %d = %d", i+1, startnode+1, distance[i]);
+			printf("\nPath = %d", i+1);
 			j=i;
 			do
 			{
 				j=pred[j];
-				printf(" <- %d", j);
+				printf(" <- %d", j+1);
 			}
 			while(j!=startnode);
 		}
