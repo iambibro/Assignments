@@ -35,7 +35,7 @@ int main()
  
 void dijkstra(int G[MAX][MAX], int n, int startnode)
 {
-	int cost[MAX][MAX], distance[MAX], pred[MAX];
+	int cost[MAX][MAX], distance[MAX], pred[MAX],k=0,a[MAX],s;
 	int visited[MAX], count, mindistance, nextnode, i,j;
 	for(i=0;i < n;i++)
 	{
@@ -69,7 +69,7 @@ void dijkstra(int G[MAX][MAX], int n, int startnode)
 		visited[nextnode]=1;
 		for(i=0;i < n;i++)
 		{
-			if(!visited[i])
+			if(!visited[i])//When not visited
 			{
 				if(mindistance+cost[nextnode][i] < distance[i])
 				{
@@ -81,17 +81,25 @@ void dijkstra(int G[MAX][MAX], int n, int startnode)
 		count++;
 	}
  
-	for(i=0;i < n;i++)
+	for(i=0;i<n;i++)
+	{
 		if(i!=startnode)
 		{
 			printf("\nDistance of %d = %d", i, distance[i]);
-			printf("\nPath = %d", i);
 			j=i;
+			printf("\nPath = ");
 			do
 			{
 				j=pred[j];
-				printf(" <- %d", j);
+				a[k++]=j;//Auxiliary storage to produce right sequence
+			}while(j!=startnode);
+			s=k-1;
+			for(k=s;k>=0;k--)
+			{
+				printf("%d->",a[k]);//Producing right sequence from the storage
 			}
-			while(j!=startnode);
+			printf("%d", i);
+			k=0;
 		}
+	}
 }
