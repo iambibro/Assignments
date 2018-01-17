@@ -4,10 +4,11 @@
 #include <limits.h>
 
 #define inf INT_MAX
-
+int i,j;
 int ** make_2d(int n){
+	
     int ** matrix = (int **)malloc(sizeof(int *) * n);
-    for(int i = 0;i < n;i++)
+    for( i = 0;i < n;i++)
         matrix[i] = (int *)malloc(sizeof(int) * n);
     return matrix;
 }
@@ -46,8 +47,8 @@ int ** prims(int ** gptr, int n, int v0){
 }
 
 void print_2d(int ** matrix, int n){
-    for(int i = 0;i < n;i++){
-        for(int j = 0;j < n;j++){
+    for( i = 0;i < n;i++){
+        for( j = 0;j < n;j++){
             if(matrix[i][j] == INT_MAX)
                 printf("-- ");
             else
@@ -64,8 +65,8 @@ int main(){
     int ** gptr = make_2d(n), ** tree = NULL;
     printf("\n(If any two vertices is not connected by an edge, enter 0)");
     printf("\n\n");
-    for(int i = 0;i < n;i++){
-        for(int j = 0;j < n;j++){
+    for( i = 0;i < n;i++){
+        for( j = 0;j < n;j++){
             printf("\b\rEnter the weight between vertices %d and %d : ", (i + 1), (j + 1));
             scanf("%d", &gptr[i][j]);
             if(gptr[i][j] == 0)
@@ -84,7 +85,7 @@ int main(){
     printf("\nThe adjacency matrix of the minimal spanning tree of the given graph is : \n");
     print_2d(tree, n);
 freeall:
-    for(int i = 0;i < n;i++){
+    for( i = 0;i < n;i++){
         free(gptr[i]);
         if(tree != NULL)
             free(tree[i]);
@@ -95,3 +96,4 @@ freeall:
     printf("\n");
     return 0;
 }
+
