@@ -7,9 +7,7 @@ General C programs:
 1.Expression balance
 2.String permutation
 3.LcmHcf
-
-4.Warshall
-5. Leap year & Date validity
+4.Leap year & Date validity
 
 Graph Theory:
 
@@ -21,6 +19,6 @@ Graph Theory:
 Data Structures:
 
 1.Binary and Linear Searching
-2.Quick sort
+2.Insertion sort
 3.Stack using array
 4.Queue using Linked list
