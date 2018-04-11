@@ -10,6 +10,7 @@ int main()
 		printf("Enter the element no. %d: ",i+1);
 		scanf("%d",a+i);
 	}
+	printf("The sorted array is: \n");
 	for(i=1;i<n;i++){//Controlling the unsorted part
 		for(j=0;j<i;j++){//Controlling the sorted part
 			if(a[i]<a[j]){
